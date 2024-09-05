@@ -1,10 +1,9 @@
 from audioop import error
-
-import numpy as np
-import tools
 import os
-from polycam_root import PolycamRoot
+import numpy as np
 import shutil
+from . import tools
+from .polycam_root import PolycamRoot
 
 def recompile(zip_root, recompile_folder=None):
 	unzip_folder = tools.unzip(zip_root)

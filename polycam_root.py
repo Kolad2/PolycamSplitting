@@ -1,7 +1,7 @@
 import os
 import numpy as np
-import tools
-from tools import load_json, find_subfolder, is_point_in_bounding_box
+from . import tools
+from .tools import load_json, find_subfolder, is_point_in_bounding_box
 import shutil
 
 class Camera:
