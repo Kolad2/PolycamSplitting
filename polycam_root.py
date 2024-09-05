@@ -4,7 +4,6 @@ import tools
 from tools import load_json, find_subfolder, is_point_in_bounding_box
 import shutil
 
-
 class Camera:
     def __init__(self, jd):
         self.name = jd["timestamp"]
@@ -135,7 +134,14 @@ class PolycamRoot:
             shutil.copy(self.confidence_folder + "/" + str(camera.name) + ".png", new_root.confidence_folder)
         print()
         tools.zip_folder(new_root.package_folder, new_root.package_folder + ".zip")
+
+        print(self.package_folder)
+        #
         return new_root
+
+    def __del__(self):
+        shutil.rmtree(self.package_folder)
+        # print("Объект MyClass удален")
 
 
 

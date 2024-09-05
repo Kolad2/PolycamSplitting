@@ -1,6 +1,7 @@
 import json
 import os
 import zipfile
+from os.path import basename
 from pathlib import Path
 import sys
 from scipy.cluster.vq import kmeans as scipy_kmeans
@@ -86,3 +87,24 @@ def zip_folder(folder_path, zip_file_path):
                 relative_path = str(os.path.relpath(file_path, folder_path))
                 zip_file.write(file_path, relative_path)
         print("Compress process done")
+
+
+
+
+def unzip(zip_file_path):
+    zip_dir = os.path.dirname(zip_file_path)
+    base_name = os.path.basename(zip_file_path)
+    zip_name = os.path.splitext(base_name)[0]
+    zip_extension = os.path.splitext(base_name)[-1]
+    if zip_extension != '.zip':
+        return -1
+    with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
+        folder_to_unzip = zip_dir + "/" + zip_name
+        print("start unzip")
+        zip_ref.extractall(folder_to_unzip)
+        print("end unzip")
+        return folder_to_unzip
+
+
+
+
