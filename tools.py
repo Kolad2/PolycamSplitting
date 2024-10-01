@@ -26,7 +26,7 @@ def find_subfolder(root_folder, target_name):
     return None
 
 def load_json(file_path):
-    with (open(file_path, 'r', encoding='utf-8') as j_file):
+    with open(file_path, 'r', encoding='utf-8') as j_file:
         return json.load(j_file)
 
 

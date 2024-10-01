@@ -25,4 +25,4 @@ def recompile(zip_root, recompile_folder=None):
 		new_folder = str(recompile_folder + "/" + zip_name + "_" + str(i))
 		polycam_root.recompile_to(new_folder, bbox=bbox)
 		i += 1
-	shutil.rmtree(unzip_folder)
+	# shutil.rmtree(unzip_folder)
