@@ -5,7 +5,7 @@ import shutil
 from . import tools
 from .polycam_root import PolycamRoot
 
-def recompile(zip_root, recompile_folder=None):
+def recompile(zip_root, recompile_folder=None,k=21):
 	unzip_folder = tools.unzip(zip_root)
 	polycam_root = PolycamRoot(unzip_folder)
 	zip_dir = os.path.dirname(zip_root)
@@ -16,7 +16,7 @@ def recompile(zip_root, recompile_folder=None):
 		raise FileNotFoundError("Файл не существует")
 
 	zip_name = os.path.splitext(os.path.basename(zip_root))[0]
-	centers, radii = tools.kmeans(polycam_root.poses, 21)
+	centers, radii = tools.kmeans(polycam_root.poses, k)
 	i = 0
 	for center, radius in zip(centers, radii):
 		bbox_min = center - radius
